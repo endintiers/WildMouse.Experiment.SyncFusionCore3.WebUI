@@ -1,0 +1,31 @@
+﻿.site-header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    z-index: 2000;
+}
+
+.transformable {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.site-content {
+    margin-top: 50px;
+}
+
+.site-main {
+    position: relative;
+    width: calc(100vw - 50px);
+    height: calc(100vh - 50px);
+    transition: 0s;
+}
+
+.header-icon {
+    color: white;
+}

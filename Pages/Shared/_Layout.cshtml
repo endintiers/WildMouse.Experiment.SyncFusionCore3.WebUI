@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WildMouse.Experiment.SyncFusionCore3.WebUI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="~/css/robotofontlatin400500.css" />
+    @*<link rel="stylesheet" href="~/css/themes/material.css" />*@
+    @*<link rel="stylesheet" href="~/css/themes/fabric.css" />*@
+    @*<link rel="stylesheet" href="~/css/themes/fabric-dark.css" />*@
+    <link rel="stylesheet" href="~/css/themes/bootstrap4.css" />
+    <link rel="stylesheet" href="~/css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <header>
+        <div id="siteheader" class="site-header transformable">
+            <div id="hamburger" class="header-icon m-2"><i id="hamburgericon" class="fad fa-bars fa-2x"></i></div>
+        </div>
+    </header>
+
+    <div id="sitecontent" class="site-content">
+
+        <ejs-sidebar id="sidebarmenu"
+                     style="background-image: url('img/library-tall.png');"
+                     width="220px" dockSize="50px" enableDock="true" type="Over"
+                     showBackdrop="false"
+                     target=".site-content" open="sidebarOpen" close="sidebarClose">
+            <e-content-template>
+                <div id="sidebar-content">
+                </div>
+            </e-content-template>
+        </ejs-sidebar>
+
+        <div id="sidebaranimated">
+            <main id="sitemain" class="site-main pb-3 transformable" role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/syncfusion.ej2.min.js"></script>
+    <script src="~/js/perfect-scrollbar.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <script>
+        // Specific to layout
+        var mainPS;
+        var sidebarInstance;
+        var sidebarMenuInstance;
+        var sidebarContentInstance;
+        var sitemainInstance;
+        var sidebarAnimatedInstance;
+        var hamburgerIconInstance;
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            sitemainInstance = document.getElementById('sitemain');
+            sidebarMenuInstance = document.getElementById('sidebarmenu');
+            sidebarInstance = document.getElementById('sidebarmenu').ej2_instances[0];
+            sidebarContentInstance = document.getElementById('sidebar-content');
+            sidebarAnimatedInstance = document.getElementById('sidebaranimated');
+            hamburgerIconInstance = document.getElementById('hamburgericon');
+            hamburgerInstance = document.getElementById('hamburger');
+
+            hamburgerInstance.onclick = function () {
+                sidebarInstance.toggle();
+            };
+
+            mainPS = new PerfectScrollbar('#sitemain');
+
+            sidebarMenuInstance.onmouseenter = function (event) {
+                sidebarInstance.show();
+            };
+
+            sidebarMenuInstance.onmouseleave = function (event) {
+                sidebarInstance.hide();
+            };
+
+        });
+
+        function sidebarOpen() {
+            sitemainInstance.style.transform = "translateX(50px)";
+            toggleHamburgerIcon();
+        }
+
+        function sidebarClose() {
+            sitemainInstance.style.transform = "translateX(0px)";
+            toggleHamburgerIcon();
+        }
+
+        function toggleHamburgerIcon() {
+            if (hamburgerIconInstance.classList.contains('fa-bars')) {
+                hamburgerIconInstance.classList.remove('fa-bars')
+                hamburgerIconInstance.classList.add('fa-times-circle');
+            }
+            else {
+                hamburgerIconInstance
+                hamburgerIconInstance.classList.remove('fa-times-circle')
+                hamburgerIconInstance.classList.add('fa-bars');
+            }
+        }
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+    <!-- Syncfusion Essential JS 2 ScriptManager -->
+    <ejs-scripts></ejs-scripts>
+</body>
+</html>
