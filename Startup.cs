@@ -62,7 +62,7 @@ namespace WildMouse.Experiment.SyncFusionCore3.WebUI
             app.UseAuthorization();
 
             //Register Syncfusion license
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTQzNDE1QDMxMzcyZTMyMmUzMFJpcTVKTk1RanJrYmc3NXR1Vy9WTFpiZy8yOHpnazZ2Qk44S2hSb3hMK0E9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("<redacted>");
 
             app.UseEndpoints(endpoints =>
             {
